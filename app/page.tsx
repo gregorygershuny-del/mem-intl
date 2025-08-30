@@ -42,7 +42,7 @@ export default function Page() {
               <Link href="/national-scrap" className="inline-flex items-center rounded-2xl border border-neutral-300 px-5 py-2 text-sm">National Scrap Company</Link>
             </div>
             <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-neutral-500">
-              <span>✔ 20+ years combined operating & trading experience</span>
+              <span>✔ 30+ years combined operating & trading experience</span>
               <span>•</span>
               <span>✔ Strong GRC mindset from shop floor to boardroom</span>
             </div>
@@ -76,7 +76,7 @@ export default function Page() {
             <p className="text-neutral-500 max-w-2xl">We connect scrap generators, processors, and mills with disciplined trading, clean paperwork, and predictable logistics.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            <ServiceCard title="Metals & Scrap Trading" bullets={["Aluminum, copper, steel flows","Tolling & offtake structures","Transparent pricing & settlement"]} />
+            <ServiceCard title="Metals & Scrap Trading" bullets={["Non-Ferrous metals and steel flows","Tolling & offtake structures","Transparent pricing & settlement"]} />
             <ServiceCard title="Logistics & Operations" bullets={["Lane discovery & routing","Yield / loss accountability","SOPs, audits, yard playbooks"]} />
             <ServiceCard title="Risk & Compliance" bullets={["Contracting & UCC/bailment","Counterparty diligence","Policy & control frameworks"]} />
           </div>
@@ -126,7 +126,7 @@ export default function Page() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-8 items-start">
           <div>
             <h3 className="text-3xl font-semibold tracking-tight">Contact</h3>
-            <p className="mt-3 text-neutral-600">Tell us your lanes, volumes, and constraints. We’ll give you a concrete plan and numbers you can verify.</p>
+            <p className="mt-3 text-neutral-600">Tell us your projects, volumes, and constraints. We’ll give you a concrete plan and numbers you can verify.</p>
             <div className="mt-6 grid gap-2 text-sm text-neutral-700">
               <p>📞 +1 (###) ###‑####</p>
               <p>Email: <a className="underline" href="mailto:trading@mem-intl.com">trading@mem-intl.com</a> or <a className="underline" href="mailto:greg@mem-intl.com">greg@mem-intl.com</a></p>
