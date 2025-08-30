@@ -58,4 +58,3 @@ function escapeHtml(s: string) {
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
 }
-
