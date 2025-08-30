@@ -23,4 +23,4 @@ Configured under `tailwind.config.cjs` with content paths for `app/**/*`.
 
 ## Contact form
 Currently client-side only. Replace with your preferred handler (e.g., Vercel serverless function, Resend, Formspree) before production if you want live email delivery.
-"# mem-intl" 
+"# mem-intl
