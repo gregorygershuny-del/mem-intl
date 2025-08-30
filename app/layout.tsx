@@ -1,21 +1,14 @@
 import "./globals.css";
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "MEM International Trading LLC",
   description: "Metals • Recycling • Risk & Compliance",
   icons: {
-    icon: [
-      { url: "/images/favicon.ico" },
-      { url: "/images/favicon-32x32.png", type: "image/png", sizes: "32x32" },
-      { url: "/images/favicon-16x16.png", type: "image/png", sizes: "16x16" },
-    ],
-    apple: [{ url: "/images/apple-icon.png" }],
+    icon: "/favicon.ico", // root favicon
+    apple: "/apple-touch-icon.png",
   },
-  // If you added `manifest` here, remove it for now.
-  // We'll add a proper app/manifest.webmanifest file later if you want.
 };
 
 export default function RootLayout({
@@ -28,9 +21,9 @@ export default function RootLayout({
       <body className="bg-neutral-50 text-neutral-900">
         {/* Navbar with logo */}
         <header className="flex items-center justify-between p-4 bg-white shadow">
-          <Link href="/" aria-label="MEM Home">
+          <Link href="/">
             <Image
-              src="/images/MEM.png"
+              src="/MEM.png"   // now points to /public/MEM.png
               alt="MEM International Trading LLC"
               width={180}
               height={40}
@@ -46,8 +39,10 @@ export default function RootLayout({
           </nav>
         </header>
 
+        {/* Main content */}
         <main>{children}</main>
       </body>
     </html>
   );
 }
+
