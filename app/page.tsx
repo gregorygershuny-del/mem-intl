@@ -128,7 +128,7 @@ export default function Page() {
             <h3 className="text-3xl font-semibold tracking-tight">Contact</h3>
             <p className="mt-3 text-neutral-600">Tell us your projects, volumes, and constraints. We’ll give you a concrete plan and numbers you can verify.</p>
             <div className="mt-6 grid gap-2 text-sm text-neutral-700">
-              <p>📞 +1 (###) ###‑####</p>
+              <p>📞 +1 (609) 598‑2266</p>
               <p>Email: <a className="underline" href="mailto:trading@mem-intl.com">trading@mem-intl.com</a> or <a className="underline" href="mailto:greg@mem-intl.com">greg@mem-intl.com</a></p>
               <p>HQ: Alpharetta, GA • Operating across the U.S.</p>
             </div>
