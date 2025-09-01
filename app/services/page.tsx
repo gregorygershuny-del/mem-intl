@@ -1,9 +1,18 @@
-// app/services/page.tsx
-export default function Page() {
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Services | MEM International",
+  description: "Our recycling and risk management services.",
+  alternates: {
+    canonical: "https://www.mem-intl.com/services",
+  },
+};
+
+export default function ServicesPage() {
   return (
-    <main style={{ padding: 24 }}>
+    <div>
       <h1>Services</h1>
       <p>This is the Services page.</p>
-    </main>
+    </div>
   );
 }

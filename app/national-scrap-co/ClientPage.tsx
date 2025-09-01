@@ -1,5 +1,5 @@
 // app/national-scrap/page.tsx
-export default function Page() {
+export default function ClientPage() {
   return (
     <main style={{ padding: 24 }}>
       <h1>National Scrap Company</h1>

@@ -1,0 +1,540 @@
+[33mcommit 5aef059cb0380b57cb7f8d25db6899425002c82d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mrescue/working-20250901-0956[m[33m)[m
+Author: Gregory Gershuny <gregorygershuny@gmail.com>
+Date:   Mon Sep 1 10:00:18 2025 -0400
+
+    fix: restore missing home page route
+
+[1mdiff --git a/app/page.tsx b/app/page.tsx[m
+[1mindex 604fad1..e69de29 100644[m
+[1m--- a/app/page.tsx[m
+[1m+++ b/app/page.tsx[m
+[36m@@ -1,219 +0,0 @@[m
+[31m-"use client";[m
+[31m-import { useState } from "react";[m
+[31m-import Link from "next/link";[m
+[31m-[m
+[31m-export default function Page() {[m
+[31m-  const [sent, setSent] = useState(false);[m
+[31m-  const year = new Date().getFullYear();[m
+[31m-  return ([m
+[31m-    <div className="min-h-screen">[m
+[31m-      <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-neutral-200">[m
+[31m-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">[m
+[31m-          <div className="flex items-center gap-3">[m
+[31m-            <div>[m
+[31m-              <h1 className="text-xl font-semibold tracking-tight">MEM International Trading LLC</h1>[m
+[31m-              <p className="text-xs text-neutral-500 -mt-0.5">Metals • Recycling • Risk & Compliance</p>[m
+[31m-            </div>[m
+[31m-          </div>[m
+[31m-          <nav className="hidden md:flex items-center gap-6 text-sm">[m
+[31m-            <a href="#services" className="hover:text-neutral-600">Services</a>[m
+[31m-            <a href="#industries" className="hover:text-neutral-600">Industries</a>[m
+[31m-            <a href="#about" className="hover:text-neutral-600">About</a>[m
+[31m-            <Link href="/national-scrap" className="hover:text-neutral-600">National Scrap Co.</Link>[m
+[31m-            <a href="#contact" className="hover:text-neutral-600">Contact</a>[m
+[31m-          </nav>[m
+[31m-          <div className="hidden md:block">[m
+[31m-            <a href="#contact" className="inline-flex items-center rounded-2xl bg-neutral-900 text-white px-4 py-2 text-sm">Let’s Talk</a>[m
+[31m-          </div>[m
+[31m-        </div>[m
+[31m-      </header>[m
+[31m-[m
+[31m-      <section className="relative overflow-hidden">[m
+[31m-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid md:grid-cols-2 gap-10 items-center">[m
+[31m-          <div>[m
+[31m-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-tight">[m
+[31m-              Global Metals Trading, <span className="text-neutral-500">Operational Excellence</span>, and <span className="text-neutral-500">Risk Discipline</span>[m
+[31m-            </h2>[m
+[31m-            <p className="mt-5 text-neutral-600 max-w-xl">[m
+[31m-              MEM International Trading buys, sells, and optimizes metal and scrap flows across North America—pairing market intelligence with rigorous risk and compliance controls. From mill relationships to yard operations, we help partners move volume profitably and transparently.[m
+[31m-            </p>[m
+[31m-            <div className="mt-6 flex flex-wrap gap-3">[m
+[31m-              <a href="#services" className="inline-flex items-center rounded-2xl bg-neutral-900 text-white px-5 py-2 text-sm">Explore Services</a>[m
+[31m-              <Link href="/national-scrap" className="inline-flex items-center rounded-2xl border border-neutral-300 px-5 py-2 text-sm">National Scrap Company</Link>[m
+[31m-            </div>[m
+[31m-            <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-neutral-500">[m
+[31m-              <span>✔ 30+ years combined operating & trading experience</span>[m
+[31m-              <span>•</span>[m
+[31m-              <span>✔ Strong GRC mindset from shop floor to boardroom</span>[m
+[31m-            </div>[m
+[31m-          </div>[m
+[31m-[m
+[31m-          <div className="relative">[m
+[31m-            <div className="rounded-3xl shadow-xl bg-white p-6 grid gap-4">[m
+[31m-              <div className="grid grid-cols-3 gap-3">[m
+[31m-                <Stat title="Monthly Volume" value="5,000+ GT" note="managed across partners" />[m
+[31m-                <Stat title="Risk Managed" value="$500M+" note="zero incident track record" />[m
+[31m-                <Stat title="On-Time" value="98.7%" note="fulfillment reliability" />[m
+[31m-              </div>[m
+[31m-              <div className="rounded-2xl bg-neutral-900 text-white p-5">[m
+[31m-                <p className="text-sm leading-5 text-neutral-300">Signal • Discipline • Execution</p>[m
+[31m-                <p className="mt-1 text-lg font-medium">Price discovery, duty & premium math, and transparent settlement mechanics that mills and generators trust.</p>[m
+[31m-              </div>[m
+[31m-              <ul className="text-sm text-neutral-600 grid gap-2">[m
+[31m-                <li>🌐 LME/Midwest premium monitoring and hedge-aware contracting</li>[m
+[31m-                <li>📈 KPI dashboards for volume, yield, and margin</li>[m
+[31m-                <li>🛡️ Compliance-first: UCC, bailment, documentation, audit trails</li>[m
+[31m-              </ul>[m
+[31m-            </div>[m
+[31m-          </div>[m
+[31m-        </div>[m
+[31m-      </section>[m
+[31m-[m
+[31m-      <section id="services" className="py-16 lg:py-24 bg-white border-t border-neutral-200">[m
+[31m-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">[m
+[31m-          <div className="flex items-end justify-between mb-8">[m
+[31m-            <h3 className="text-3xl font-semibold tracking-tight">Services</h3>[m
+[31m-            <p className="text-neutral-500 max-w-2xl">We connect scrap generators, processors, and mills with disciplined trading, clean paperwork, and predictable logistics.</p>[m
+[31m-          </div>[m
+[31m-          <div className="grid md:grid-cols-3 gap-6">[m
+[31m-            <ServiceCard title="Metals & Scrap Trading" bullets={["Non-Ferrous metals and steel flows","Tolling & offtake structures","Transparent pricing & settlement"]} />[m
+[31m-            <ServiceCard title="Logistics & Operations" bullets={["Lane discovery & routing","Yield / loss accountability","SOPs, audits, yard playbooks"]} />[m
+[31m-            <ServiceCard title="Risk & Compliance" bullets={["Contracting & UCC/bailment","Counterparty diligence","Policy & control frameworks"]} />[m
+[31m-          </div>[m
+[31m-        </div>[m
+[31m-      </section>[m
+[31m-[m
+[31m-      <section id="industries" className="py-16 lg:py-24 bg-neutral-50">[m
+[31m-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">[m
+[31m-          <h3 className="text-3xl font-semibold tracking-tight mb-6">Industries We Serve</h3>[m
+[31m-          <div className="grid md:grid-cols-4 gap-6">[m
+[31m-            <Industry title="Mills & Foundries" desc="Busheling, bundles, shred, and clean prompt flows." />[m
+[31m-            <Industry title="Manufacturers" desc="Turn-key scrap programs with reporting your CFO accepts." />[m
+[31m-            <Industry title="Recyclers" desc="Yield, moisture, and downgrade accountability that sticks." />[m
+[31m-            <Industry title="Public Sector" desc="Secure destruction, audit trails, and environmental compliance." />[m
+[31m-          </div>[m
+[31m-        </div>[m
+[31m-      </section>[m
+[31m-[m
+[31m-      <section id="about" className="py-16 lg:py-24 bg-neutral-50">[m
+[31m-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-start">[m
+[31m-          <div>[m
+[31m-            <h3 className="text-3xl font-semibold tracking-tight">About MEM</h3>[m
+[31m-            <p className="mt-3 text-neutral-700">Founded to bridge disciplined commodity trading with real-world yard and mill operations, MEM International Trading brings shop-floor accountability to market-facing decisions. We speak both languages: production and price. Our approach is forward and unvarnished—tight contracts, clear math, fast communication, and zero surprises.</p>[m
+[31m-            <ul className="mt-5 grid gap-2 text-neutral-700 text-sm">[m
+[31m-              <li>✔ Zero-incident risk stewardship over $500MM managed</li>[m
+[31m-              <li>✔ Deep mill and recycler relationships across the U.S.</li>[m
+[31m-              <li>✔ Data-driven reporting your finance team will actually use</li>[m
+[31m-            </ul>[m
+[31m-          </div>[m
+[31m-          <div className="rounded-3xl shadow-xl bg-white p-6">[m
+[31m-            <div className="grid gap-4">[m
+[31m-              <div className="grid grid-cols-2 gap-3">[m
+[31m-                <MiniStat label="LME/MW Pricing Feeds" value="Integrated" />[m
+[31m-                <MiniStat label="Contracts & UCC" value="Template-ready" />[m
+[31m-              </div>[m
+[31m-              <div className="grid grid-cols-2 gap-3">[m
+[31m-                <MiniStat label="Ops SOPs" value="Deployable" />[m
+[31m-                <MiniStat label="Dashboards" value="Looker/Sheets" />[m
+[31m-              </div>[m
+[31m-              <p className="text-xs text-neutral-500">Logistics partners, inspection firms, and secure destruction workflows available on request.</p>[m
+[31m-            </div>[m
+[31m-          </div>[m
+[31m-        </div>[m
+[31m-      </section>[m
+[31m-[m
+[31m-      <section id="contact" className="py-16 lg:py-24 bg-white">[m
+[31m-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-8 items-start">[m
+[31m-          <div>[m
+[31m-            <h3 className="text-3xl font-semibold tracking-tight">Contact</h3>[m
+[31m-            <p className="mt-3 text-neutral-600">Tell us your projects, volumes, and constraints. We’ll give you a concrete plan and numbers you can verify.</p>[m
+[31m-            <div className="mt-6 grid gap-2 text-sm text-neutral-700">[m
+[31m-              <p>📞 +1 (609) 598‑2266</p>[m
+[31m-              <p>Email: <a className="underline" href="mailto:trading@mem-intl.com">trading@mem-intl.com</a> or <a className="underline" href="mailto:greg@mem-intl.com">greg@mem-intl.com</a></p>[m
+[31m-              <p>HQ: Alpharetta, GA • Operating across the U.S.</p>[m
+[31m-            </div>[m
+[31m-          </div>[m
+[31m-          <div className="rounded-3xl shadow-xl bg-white p-6">[m
+[31m-            {sent ? ([m
+[31m-              <div className="text-center py-10">[m
+[31m-                <div className="mx-auto h-10 w-10 grid place-items-center text-green-600 text-2xl">✔</div>[m
+[31m-                <p className="mt-3 font-medium">Thanks—your message is queued locally.</p>[m
+[31m-                <p className="text-sm text-neutral-600">In production, wire this form to your email/CRM webhook.</p>[m
+[31m-                <div className="mt-4">[m
+[31m-                  <button onClick={() => setSent(false)} className="border rounded-2xl px-4 py-2 text-sm">Send another</button>[m
+[31m-                </div>[m
+[31m-              </div>[m
+[31m-            ) : ([m
+[31m-              <form className="grid gap-4" onSubmit={(e) => {e.preventDefault(); setSent(true);}}>[m
+[31m-                <div className="grid gap-1">[m
+[31m-                  <label className="text-sm">Name</label>[m
+[31m-                  <input className="border rounded-md px-3 py-2" placeholder="Your name" required />[m
+[31m-                </div>[m
+[31m-                <div className="grid gap-1">[m
+[31m-                  <label className="text-sm">Email</label>[m
+[31m-                  <input type="email" className="border rounded-md px-3 py-2" placeholder="you@company.com" required />[m
+[31m-                </div>[m
+[31m-                <div className="grid gap-1">[m
+[31m-                  <label className="text-sm">Message</label>[m
+[31m-                  <textarea className="border rounded-md px-3 py-2" placeholder="Volumes, materials, lanes, timelines…" required />[m
+[31m-                </div>[m
+[31m-                <button type="submit" className="rounded-2xl bg-neutral-900 text-white px-4 py-2 text-sm">Send Message</button>[m
+[31m-              </form>[m
+[31m-            )}[m
+[31m-          </div>[m
+[31m-        </div>[m
+[31m-      </section>[m
+[31m-[m
+[31m-      <footer className="border-t border-neutral-200 py-10">[m
+[31m-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-neutral-600">[m
+[31m-          <p>© {year} MEM International Trading LLC. All rights reserved.</p>[m
+[31m-          <div className="flex items-center gap-4">[m
+[31m-            <a className="underline" href="#">Privacy</a>[m
+[31m-            <a className="underline" href="#">Terms</a>[m
+[31m-          </div>[m
+[31m-        </div>[m
+[31m-      </footer>[m
+[31m-    </div>[m
+[31m-  );[m
+[31m-}[m
+[31m-[m
+[31m-function Stat({ title, value, note }: { title: string; value: string; note: string }) {[m
+[31m-  return ([m
+[31m-    <div className="rounded-2xl border border-neutral-200 p-4">[m
+[31m-      <p className="text-xs text-neutral-500">{title}</p>[m
+[31m-      <p className="text-xl font-semibold mt-1">{value}</p>[m
+[31m-      <p className="text-xs text-neutral-500 mt-0.5">{note}</p>[m
+[31m-    </div>[m
+[31m-  );[m
+[31m-}[m
+[31m-[m
+[31m-function ServiceCard({ title, bullets }: { title: string; bullets: string[] }) {[m
+[31m-  return ([m
+[31m-    <div className="rounded-3xl shadow-sm hover:shadow-md transition-shadow border border-neutral-200 bg-white p-6">[m
+[31m-      <h4 className="text-lg font-semibold">{title}</h4>[m
+[31m-      <ul className="mt-3 grid gap-2 text-sm text-neutral-700">[m
+[31m-        {bullets.map((b, i) => ([m
+[31m-          <li key={i} className="flex items-start gap-2">✔ {b}</li>[m
+[31m-        ))}[m
+[31m-      </ul>[m
+[31m-    </div>[m
+[31m-  );[m
+[31m-}[m
+[31m-[m
+[31m-function Industry({ title, desc }: { title: string; desc: string }) {[m
+[31m-  return ([m
+[31m-    <div className="rounded-3xl shadow-sm border border-neutral-200 bg-white p-6">[m
+[31m-      <h5 className="font-semibold">{title}</h5>[m
+[31m-      <p className="text-sm text-neutral-600 mt-1">{desc}</p>[m
+[31m-    </div>[m
+[31m-  );[m
+[31m-}[m
+[31m-[m
+[31m-function MiniStat({ label, value }: { label: string; value: string }) {[m
+[31m-  return ([m
+[31m-    <div className="rounded-2xl border border-neutral-200 p-4 bg-white">[m
+[31m-      <p className="text-xs text-neutral-500">{label}</p>[m
+[31m-      <p className="text-base font-semibold">{value}</p>[m
+[31m-    </div>[m
+[31m-  );[m
+[31m-}[m
+
+[33mcommit 44188f92f8c8123018dab01820e36a39a6cc9611[m
+Author: gregorygershuny-del <gregorygershuny@gmail.com>
+Date:   Sat Aug 30 16:44:22 2025 -0400
+
+    Update page.tsx
+
+[1mdiff --git a/app/page.tsx b/app/page.tsx[m
+[1mindex fa1e47a..604fad1 100644[m
+[1m--- a/app/page.tsx[m
+[1m+++ b/app/page.tsx[m
+[36m@@ -128,7 +128,7 @@[m [mexport default function Page() {[m
+             <h3 className="text-3xl font-semibold tracking-tight">Contact</h3>[m
+             <p className="mt-3 text-neutral-600">Tell us your projects, volumes, and constraints. We’ll give you a concrete plan and numbers you can verify.</p>[m
+             <div className="mt-6 grid gap-2 text-sm text-neutral-700">[m
+[31m-              <p>📞 +1 (###) ###‑####</p>[m
+[32m+[m[32m              <p>📞 +1 (609) 598‑2266</p>[m
+               <p>Email: <a className="underline" href="mailto:trading@mem-intl.com">trading@mem-intl.com</a> or <a className="underline" href="mailto:greg@mem-intl.com">greg@mem-intl.com</a></p>[m
+               <p>HQ: Alpharetta, GA • Operating across the U.S.</p>[m
+             </div>[m
+
+[33mcommit f36ae6e91bab804fd692799888b91fc4da2d441e[m
+Author: gregorygershuny-del <gregorygershuny@gmail.com>
+Date:   Sat Aug 30 16:42:59 2025 -0400
+
+    Update page.tsx
+
+[1mdiff --git a/app/page.tsx b/app/page.tsx[m
+[1mindex 5478796..fa1e47a 100644[m
+[1m--- a/app/page.tsx[m
+[1m+++ b/app/page.tsx[m
+[36m@@ -42,7 +42,7 @@[m [mexport default function Page() {[m
+               <Link href="/national-scrap" className="inline-flex items-center rounded-2xl border border-neutral-300 px-5 py-2 text-sm">National Scrap Company</Link>[m
+             </div>[m
+             <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-neutral-500">[m
+[31m-              <span>✔ 20+ years combined operating & trading experience</span>[m
+[32m+[m[32m              <span>✔ 30+ years combined operating & trading experience</span>[m
+               <span>•</span>[m
+               <span>✔ Strong GRC mindset from shop floor to boardroom</span>[m
+             </div>[m
+[36m@@ -76,7 +76,7 @@[m [mexport default function Page() {[m
+             <p className="text-neutral-500 max-w-2xl">We connect scrap generators, processors, and mills with disciplined trading, clean paperwork, and predictable logistics.</p>[m
+           </div>[m
+           <div className="grid md:grid-cols-3 gap-6">[m
+[31m-            <ServiceCard title="Metals & Scrap Trading" bullets={["Aluminum, copper, steel flows","Tolling & offtake structures","Transparent pricing & settlement"]} />[m
+[32m+[m[32m            <ServiceCard title="Metals & Scrap Trading" bullets={["Non-Ferrous metals and steel flows","Tolling & offtake structures","Transparent pricing & settlement"]} />[m
+             <ServiceCard title="Logistics & Operations" bullets={["Lane discovery & routing","Yield / loss accountability","SOPs, audits, yard playbooks"]} />[m
+             <ServiceCard title="Risk & Compliance" bullets={["Contracting & UCC/bailment","Counterparty diligence","Policy & control frameworks"]} />[m
+           </div>[m
+[36m@@ -126,7 +126,7 @@[m [mexport default function Page() {[m
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-8 items-start">[m
+           <div>[m
+             <h3 className="text-3xl font-semibold tracking-tight">Contact</h3>[m
+[31m-            <p className="mt-3 text-neutral-600">Tell us your lanes, volumes, and constraints. We’ll give you a concrete plan and numbers you can verify.</p>[m
+[32m+[m[32m            <p className="mt-3 text-neutral-600">Tell us your projects, volumes, and constraints. We’ll give you a concrete plan and numbers you can verify.</p>[m
+             <div className="mt-6 grid gap-2 text-sm text-neutral-700">[m
+               <p>📞 +1 (###) ###‑####</p>[m
+               <p>Email: <a className="underline" href="mailto:trading@mem-intl.com">trading@mem-intl.com</a> or <a className="underline" href="mailto:greg@mem-intl.com">greg@mem-intl.com</a></p>[m
+
+[33mcommit 55ec5de63ac0b17d7bce1c59d3a606b25f0baa18[m
+Author: gregorygershuny-del <gregorygershuny@gmail.com>
+Date:   Sat Aug 30 16:40:15 2025 -0400
+
+    Update page.tsx
+
+[1mdiff --git a/app/page.tsx b/app/page.tsx[m
+[1mindex b8e0bce..5478796 100644[m
+[1m--- a/app/page.tsx[m
+[1m+++ b/app/page.tsx[m
+[36m@@ -10,7 +10,6 @@[m [mexport default function Page() {[m
+       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-neutral-200">[m
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">[m
+           <div className="flex items-center gap-3">[m
+[31m-            <div className="h-10 w-10 rounded-full bg-neutral-900 text-white grid place-items-center font-bold">M</div>[m
+             <div>[m
+               <h1 className="text-xl font-semibold tracking-tight">MEM International Trading LLC</h1>[m
+               <p className="text-xs text-neutral-500 -mt-0.5">Metals • Recycling • Risk & Compliance</p>[m
+
+[33mcommit a4243e25dc8889f4d560d64dbebdba0c4c610ca9[m
+Author: Gregory Gershuny <gregorygershuny@gmail.com>
+Date:   Sat Aug 30 12:51:52 2025 -0400
+
+    Initial commit
+
+[1mdiff --git a/app/page.tsx b/app/page.tsx[m
+[1mnew file mode 100644[m
+[1mindex 0000000..b8e0bce[m
+[1m--- /dev/null[m
+[1m+++ b/app/page.tsx[m
+[36m@@ -0,0 +1,220 @@[m
+[32m+[m[32m"use client";[m
+[32m+[m[32mimport { useState } from "react";[m
+[32m+[m[32mimport Link from "next/link";[m
+[32m+[m
+[32m+[m[32mexport default function Page() {[m
+[32m+[m[32m  const [sent, setSent] = useState(false);[m
+[32m+[m[32m  const year = new Date().getFullYear();[m
+[32m+[m[32m  return ([m
+[32m+[m[32m    <div className="min-h-screen">[m
+[32m+[m[32m      <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-neutral-200">[m
+[32m+[m[32m        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">[m
+[32m+[m[32m          <div className="flex items-center gap-3">[m
+[32m+[m[32m            <div className="h-10 w-10 rounded-full bg-neutral-900 text-white grid place-items-center font-bold">M</div>[m
+[32m+[m[32m            <div>[m
+[32m+[m[32m              <h1 className="text-xl font-semibold tracking-tight">MEM International Trading LLC</h1>[m
+[32m+[m[32m              <p className="text-xs text-neutral-500 -mt-0.5">Metals • Recycling • Risk & Compliance</p>[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m          <nav className="hidden md:flex items-center gap-6 text-sm">[m
+[32m+[m[32m            <a href="#services" className="hover:text-neutral-600">Services</a>[m
+[32m+[m[32m            <a href="#industries" className="hover:text-neutral-600">Industries</a>[m
+[32m+[m[32m            <a href="#about" className="hover:text-neutral-600">About</a>[m
+[32m+[m[32m            <Link href="/national-scrap" className="hover:text-neutral-600">National Scrap Co.</Link>[m
+[32m+[m[32m            <a href="#contact" className="hover:text-neutral-600">Contact</a>[m
+[32m+[m[32m          </nav>[m
+[32m+[m[32m          <div className="hidden md:block">[m
+[32m+[m[32m            <a href="#contact" className="inline-flex items-center rounded-2xl bg-neutral-900 text-white px-4 py-2 text-sm">Let’s Talk</a>[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m        </div>[m
+[32m+[m[32m      </header>[m
+[32m+[m
+[32m+[m[32m      <section className="relative overflow-hidden">[m
+[32m+[m[32m        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid md:grid-cols-2 gap-10 items-center">[m
+[32m+[m[32m          <div>[m
+[32m+[m[32m            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-tight">[m
+[32m+[m[32m              Global Metals Trading, <span className="text-neutral-500">Operational Excellence</span>, and <span className="text-neutral-500">Risk Discipline</span>[m
+[32m+[m[32m            </h2>[m
+[32m+[m[32m            <p className="mt-5 text-neutral-600 max-w-xl">[m
+[32m+[m[32m              MEM International Trading buys, sells, and optimizes metal and scrap flows across North America—pairing market intelligence with rigorous risk and compliance controls. From mill relationships to yard operations, we help partners move volume profitably and transparently.[m
+[32m+[m[32m            </p>[m
+[32m+[m[32m            <div className="mt-6 flex flex-wrap gap-3">[m
+[32m+[m[32m              <a href="#services" className="inline-flex items-center rounded-2xl bg-neutral-900 text-white px-5 py-2 text-sm">Explore Services</a>[m
+[32m+[m[32m              <Link href="/national-scrap" className="inline-flex items-center rounded-2xl border border-neutral-300 px-5 py-2 text-sm">National Scrap Company</Link>[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m            <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-neutral-500">[m
+[32m+[m[32m              <span>✔ 20+ years combined operating & trading experience</span>[m
+[32m+[m[32m              <span>•</span>[m
+[32m+[m[32m              <span>✔ Strong GRC mindset from shop floor to boardroom</span>[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m          </div>[m
+[32m+[m
+[32m+[m[32m          <div className="relative">[m
+[32m+[m[32m            <div className="rounded-3xl shadow-xl bg-white p-6 grid gap-4">[m
+[32m+[m[32m              <div className="grid grid-cols-3 gap-3">[m
+[32m+[m[32m                <Stat title="Monthly Volume" value="5,000+ GT" note="managed across partners" />[m
+[32m+[m[32m                <Stat title="Risk Managed" value="$500M+" note="zero incident track record" />[m
+[32m+[m[32m                <Stat title="On-Time" value="98.7%" note="fulfillment reliability" />[m
+[32m+[m[32m              </div>[m
+[32m+[m[32m              <div className="rounded-2xl bg-neutral-900 text-white p-5">[m
+[32m+[m[32m                <p className="text-sm leading-5 text-neutral-300">Signal • Discipline • Execution</p>[m
+[32m+[m[32m                <p className="mt-1 text-lg font-medium">Price discovery, duty & premium math, and transparent settlement mechanics that mills and generators trust.</p>[m
+[32m+[m[32m              </div>[m
+[32m+[m[32m              <ul className="text-sm text-neutral-600 grid gap-2">[m
+[32m+[m[32m                <li>🌐 LME/Midwest premium monitoring and hedge-aware contracting</li>[m
+[32m+[m[32m                <li>📈 KPI dashboards for volume, yield, and margin</li>[m
+[32m+[m[32m                <li>🛡️ Compliance-first: UCC, bailment, documentation, audit trails</li>[m
+[32m+[m[32m              </ul>[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m        </div>[m
+[32m+[m[32m      </section>[m
+[32m+[m
+[32m+[m[32m      <section id="services" className="py-16 lg:py-24 bg-white border-t border-neutral-200">[m
+[32m+[m[32m        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">[m
+[32m+[m[32m          <div className="flex items-end justify-between mb-8">[m
+[32m+[m[32m            <h3 className="text-3xl font-semibold tracking-tight">Services</h3>[m
+[32m+[m[32m            <p className="text-neutral-500 max-w-2xl">We connect scrap generators, processors, and mills with disciplined trading, clean paperwork, and predictable logistics.</p>[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m          <div className="grid md:grid-cols-3 gap-6">[m
+[32m+[m[32m            <ServiceCard title="Metals & Scrap Trading" bullets={["Aluminum, copper, steel flows","Tolling & offtake structures","Transparent pricing & settlement"]} />[m
+[32m+[m[32m            <ServiceCard title="Logistics & Operations" bullets={["Lane discovery & routing","Yield / loss accountability","SOPs, audits, yard playbooks"]} />[m
+[32m+[m[32m            <ServiceCard title="Risk & Compliance" bullets={["Contracting & UCC/bailment","Counterparty diligence","Policy & control frameworks"]} />[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m        </div>[m
+[32m+[m[32m      </section>[m
+[32m+[m
+[32m+[m[32m      <section id="industries" className="py-16 lg:py-24 bg-neutral-50">[m
+[32m+[m[32m        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">[m
+[32m+[m[32m          <h3 className="text-3xl font-semibold tracking-tight mb-6">Industries We Serve</h3>[m
+[32m+[m[32m          <div className="grid md:grid-cols-4 gap-6">[m
+[32m+[m[32m            <Industry title="Mills & Foundries" desc="Busheling, bundles, shred, and clean prompt flows." />[m
+[32m+[m[32m            <Industry title="Manufacturers" desc="Turn-key scrap programs with reporting your CFO accepts." />[m
+[32m+[m[32m            <Industry title="Recyclers" desc="Yield, moisture, and downgrade accountability that sticks." />[m
+[32m+[m[32m            <Industry title="Public Sector" desc="Secure destruction, audit trails, and environmental compliance." />[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m        </div>[m
+[32m+[m[32m      </section>[m
+[32m+[m
+[32m+[m[32m      <section id="about" className="py-16 lg:py-24 bg-neutral-50">[m
+[32m+[m[32m        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-start">[m
+[32m+[m[32m          <div>[m
+[32m+[m[32m            <h3 className="text-3xl font-semibold tracking-tight">About MEM</h3>[m
+[32m+[m[32m            <p className="mt-3 text-neutral-700">Founded to bridge disciplined commodity trading with real-world yard and mill operations, MEM International Trading brings shop-floor accountability to market-facing decisions. We speak both languages: production and price. Our approach is forward and unvarnished—tight contracts, clear math, fast communication, and zero surprises.</p>[m
+[32m+[m[32m            <ul className="mt-5 grid gap-2 text-neutral-700 text-sm">[m
+[32m+[m[32m              <li>✔ Zero-incident risk stewardship over $500MM managed</li>[m
+[32m+[m[32m              <li>✔ Deep mill and recycler relationships across the U.S.</li>[m
+[32m+[m[32m              <li>✔ Data-driven reporting your finance team will actually use</li>[m
+[32m+[m[32m            </ul>[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m          <div className="rounded-3xl shadow-xl bg-white p-6">[m
+[32m+[m[32m            <div className="grid gap-4">[m
+[32m+[m[32m              <div className="grid grid-cols-2 gap-3">[m
+[32m+[m[32m                <MiniStat label="LME/MW Pricing Feeds" value="Integrated" />[m
+[32m+[m[32m                <MiniStat label="Contracts & UCC" value="Template-ready" />[m
+[32m+[m[32m              </div>[m
+[32m+[m[32m              <div className="grid grid-cols-2 gap-3">[m
+[32m+[m[32m                <MiniStat label="Ops SOPs" value="Deployable" />[m
+[32m+[m[32m                <MiniStat label="Dashboards" value="Looker/Sheets" />[m
+[32m+[m[32m              </div>[m
+[32m+[m[32m              <p className="text-xs text-neutral-500">Logistics partners, inspection firms, and secure destruction workflows available on request.</p>[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m        </div>[m
+[32m+[m[32m      </section>[m
+[32m+[m
+[32m+[m[32m      <section id="contact" className="py-16 lg:py-24 bg-white">[m
+[32m+[m[32m        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-8 items-start">[m
+[32m+[m[32m          <div>[m
+[32m+[m[32m            <h3 className="text-3xl font-semibold tracking-tight">Contact</h3>[m
+[32m+[m[32m            <p className="mt-3 text-neutral-600">Tell us your lanes, volumes, and constraints. We’ll give you a concrete plan and numbers you can verify.</p>[m
+[32m+[m[32m            <div className="mt-6 grid gap-2 text-sm text-neutral-700">[m
+[32m+[m[32m              <p>📞 +1 (###) ###‑####</p>[m
+[32m+[m[32m              <p>Email: <a className="underline" href="mailto:trading@mem-intl.com">trading@mem-intl.com</a> or <a className="underline" href="mailto:greg@mem-intl.com">greg@mem-intl.com</a></p>[m
+[32m+[m[32m              <p>HQ: Alpharetta, GA • Operating across the U.S.</p>[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m          <div className="rounded-3xl shadow-xl bg-white p-6">[m
+[32m+[m[32m            {sent ? ([m
+[32m+[m[32m              <div className="text-center py-10">[m
+[32m+[m[32m                <div className="mx-auto h-10 w-10 grid place-items-center text-green-600 text-2xl">✔</div>[m
+[32m+[m[32m                <p className="mt-3 font-medium">Thanks—your message is queued locally.</p>[m
+[32m+[m[32m                <p className="text-sm text-neutral-600">In production, wire this form to your email/CRM webhook.</p>[m
+[32m+[m[32m                <div className="mt-4">[m
+[32m+[m[32m                  <button onClick={() => setSent(false)} className="border rounded-2xl px-4 py-2 text-sm">Send another</button>[m
+[32m+[m[32m                </div>[m
+[32m+[m[32m              </div>[m
+[32m+[m[32m            ) : ([m
+[32m+[m[32m              <form className="grid gap-4" onSubmit={(e) => {e.preventDefault(); setSent(true);}}>[m
+[32m+[m[32m                <div className="grid gap-1">[m
+[32m+[m[32m                  <label className="text-sm">Name</label>[m
+[32m+[m[32m                  <input className="border rounded-md px-3 py-2" placeholder="Your name" required />[m
+[32m+[m[32m                </div>[m
+[32m+[m[32m                <div className="grid gap-1">[m
+[32m+[m[32m                  <label className="text-sm">Email</label>[m
+[32m+[m[32m                  <input type="email" className="border rounded-md px-3 py-2" placeholder="you@company.com" required />[m
+[32m+[m[32m                </div>[m
+[32m+[m[32m                <div className="grid gap-1">[m
+[32m+[m[32m                  <label className="text-sm">Message</label>[m
+[32m+[m[32m                  <textarea className="border rounded-md px-3 py-2" placeholder="Volumes, materials, lanes, timelines…" required />[m
+[32m+[m[32m                </div>[m
+[32m+[m[32m                <button type="submit" className="rounded-2xl bg-neutral-900 text-white px-4 py-2 text-sm">Send Message</button>[m
+[32m+[m[32m              </form>[m
+[32m+[m[32m            )}[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m        </div>[m
+[32m+[m[32m      </section>[m
+[32m+[m
+[32m+[m[32m      <footer className="border-t border-neutral-200 py-10">[m
+[32m+[m[32m        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-neutral-600">[m
+[32m+[m[32m          <p>© {year} MEM International Trading LLC. All rights reserved.</p>[m
+[32m+[m[32m          <div className="flex items-center gap-4">[m
+[32m+[m[32m            <a className="underline" href="#">Privacy</a>[m
+[32m+[m[32m            <a className="underline" href="#">Terms</a>[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m        </div>[m
+[32m+[m[32m      </footer>[m
+[32m+[m[32m    </div>[m
+[32m+[m[32m  );[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mfunction Stat({ title, value, note }: { title: string; value: string; note: string }) {[m
+[32m+[m[32m  return ([m
+[32m+[m[32m    <div className="rounded-2xl border border-neutral-200 p-4">[m
+[32m+[m[32m      <p className="text-xs text-neutral-500">{title}</p>[m
+[32m+[m[32m      <p className="text-xl font-semibold mt-1">{value}</p>[m
+[32m+[m[32m      <p className="text-xs text-neutral-500 mt-0.5">{note}</p>[m
+[32m+[m[32m    </div>[m
+[32m+[m[32m  );[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mfunction ServiceCard({ title, bullets }: { title: string; bullets: string[] }) {[m
+[32m+[m[32m  return ([m
+[32m+[m[32m    <div className="rounded-3xl shadow-sm hover:shadow-md transition-shadow border border-neutral-200 bg-white p-6">[m
+[32m+[m[32m      <h4 className="text-lg font-semibold">{title}</h4>[m
+[32m+[m[32m      <ul className="mt-3 grid gap-2 text-sm text-neutral-700">[m
+[32m+[m[32m        {bullets.map((b, i) => ([m
+[32m+[m[32m          <li key={i} className="flex items-start gap-2">✔ {b}</li>[m
+[32m+[m[32m        ))}[m
+[32m+[m[32m      </ul>[m
+[32m+[m[32m    </div>[m
+[32m+[m[32m  );[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mfunction Industry({ title, desc }: { title: string; desc: string }) {[m
+[32m+[m[32m  return ([m
+[32m+[m[32m    <div className="rounded-3xl shadow-sm border border-neutral-200 bg-white p-6">[m
+[32m+[m[32m      <h5 className="font-semibold">{title}</h5>[m
+[32m+[m[32m      <p className="text-sm text-neutral-600 mt-1">{desc}</p>[m
+[32m+[m[32m    </div>[m
+[32m+[m[32m  );[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mfunction MiniStat({ label, value }: { label: string; value: string }) {[m
+[32m+[m[32m  return ([m
+[32m+[m[32m    <div className="rounded-2xl border border-neutral-200 p-4 bg-white">[m
+[32m+[m[32m      <p className="text-xs text-neutral-500">{label}</p>[m
+[32m+[m[32m      <p className="text-base font-semibold">{value}</p>[m
+[32m+[m[32m    </div>[m
+[32m+[m[32m  );[m
+[32m+[m[32m}[m

@@ -1,11 +1,1 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --bg: 250 250 250;
-}
-
-html, body {
-  height: 100%;
-}
+/* keep empty for now */
