@@ -16,8 +16,8 @@ export default function Page() {
             <Image
               src="/MEM.png"
               alt="MEM logo"
-              width={320}
-              height={80}
+              width={180}
+              height={60}
               className="rounded-full"
             />
             <div>
