@@ -1,1 +1,6 @@
-/* keep empty for now */
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+body { @apply bg-neutral-50 text-neutral-900; }
