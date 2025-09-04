@@ -211,7 +211,7 @@ export default function Page() {
             {sent ? (
               <div className="text-center py-10">
                 <div className="mx-auto h-10 w-10 grid place-items-center text-green-600 text-2xl">✔</div>
-                <<p className="mt-3 font-medium">Thank you! We'll respond soon.</p>
+                <p className="mt-3 font-medium">Thank you! We'll respond soon.</p>
                 <p className="text-sm text-neutral-600">MEM International Trading</p>
                 <div className="mt-4">
                   <button onClick={() => setSent(false)} className="border rounded-2xl px-4 py-2 text-sm">Send another</button>
