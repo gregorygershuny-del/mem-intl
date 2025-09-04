@@ -6,21 +6,21 @@
   <input
     type="text"
     name="name"
-    placeholder="Your Name"
     required
+    placeholder="Your Name"
     className="w-full border border-gray-300 rounded p-2"
   />
   <input
     type="email"
     name="email"
-    placeholder="Your Email"
     required
+    placeholder="Your Email"
     className="w-full border border-gray-300 rounded p-2"
   />
   <textarea
     name="message"
-    placeholder="Volumes, materials, lanes, timelines..."
     required
+    placeholder="Volumes, materials, lanes, timelines..."
     className="w-full border border-gray-300 rounded p-2"
     rows={5}
   ></textarea>
@@ -31,3 +31,4 @@
     Send Message
   </button>
 </form>
+
