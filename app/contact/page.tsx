@@ -5,36 +5,12 @@ import { useState } from "react";
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-
-    const res = await fetch("https://formspree.io/f/mzzakdkw", {
-      method: "POST",
-      body: formData,
-      headers: {
-        Accept: "application/json",
-      },
-    });
-
-    if (res.ok) {
-      setSent(true);
-    } else {
-      alert("There was an error. Please try again.");
-    }
-  }
-
   return (
     <div className="max-w-xl mx-auto p-8">
       {sent ? (
         <div className="text-center py-10">
-          <div className="mx-auto h-10 w-10 grid place-items-center text-green-600 text-2xl">
-            ✓
-          </div>
-          <p className="mt-3 font-medium">
-            Thanks! We will respond to you shortly!
-          </p>
+          <div className="mx-auto h-10 w-10 grid place-items-center text-green-600 text-2xl">✓</div>
+          <p className="mt-3 font-medium">Thanks! We will respond to you shortly!</p>
           <p className="text-sm text-neutral-600">MEM International Trading</p>
           <div className="mt-4">
             <button
@@ -46,7 +22,12 @@ export default function ContactPage() {
           </div>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form
+          action="https://formspree.io/f/mzzakdkw"
+          method="POST"
+          onSubmit={() => setSent(true)}
+          className="space-y-6"
+        >
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Name
