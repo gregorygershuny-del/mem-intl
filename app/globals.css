@@ -2,5 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: light; }
-body { @apply bg-neutral-50 text-neutral-900; }
+:root { 
+  color-scheme: light; 
+}
+
+body { 
+  @apply bg-neutral-50 text-neutral-900; 
+}
+
+/* ✅ Fix sticky header cutting off sections */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* adjust if your header is taller/shorter */
+}
