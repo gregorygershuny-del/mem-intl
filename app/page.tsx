@@ -81,8 +81,8 @@ export default function Page() {
           <div className="relative">
             <div className="rounded-3xl shadow-xl bg-white p-6 grid gap-4">
               <div className="grid grid-cols-3 gap-3">
-                <Stat title="Monthly Volume" value="5,000+ GT" note="managed across partners" />
-                <Stat title="Risk Managed" value="$500M+" note="zero incident track record" />
+                <Stat title="Monthly Volume" value="40,000+ MT" note="managed across partners" />
+                <Stat title="Risk Managed" value="$500MM+" note="zero incident track record" />
                 <Stat title="On-Time" value="98.7%" note="fulfillment reliability" />
               </div>
               <div className="rounded-2xl bg-neutral-900 text-white p-5">
@@ -211,8 +211,8 @@ export default function Page() {
             {sent ? (
               <div className="text-center py-10">
                 <div className="mx-auto h-10 w-10 grid place-items-center text-green-600 text-2xl">✔</div>
-                <p className="mt-3 font-medium">Thanks—your message is queued locally.</p>
-                <p className="text-sm text-neutral-600">In production, wire this form to your email/CRM webhook.</p>
+                <p className="mt-3 font-medium">Thanks—We will respond to you shortly!</p>
+                <p className="text-sm text-neutral-600">MEM International Trading.</p>
                 <div className="mt-4">
                   <button onClick={() => setSent(false)} className="border rounded-2xl px-4 py-2 text-sm">Send another</button>
                 </div>
