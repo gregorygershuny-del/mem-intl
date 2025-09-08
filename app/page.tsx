@@ -4,8 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function Page() {
-  const [sent, setSent] = useState(false);
-  const year = new Date().getFullYear();
+   const year = new Date().getFullYear();
 
   return (
     <div className="min-h-screen">
@@ -185,58 +184,43 @@ export default function Page() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-16 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-8 items-start">
-          <div>
-            <h3 className="text-3xl font-semibold tracking-tight">Contact</h3>
-            <p className="mt-3 text-neutral-600">
-              Tell us your projects, volumes, and constraints. We’ll give you a concrete plan and numbers you can verify.
-            </p>
-            <div className="mt-6 grid gap-2 text-sm text-neutral-700">
-              <p>📞 +1 (609) 598-2266</p>
-              <p>
-                Email:{" "}
-                <a className="underline" href="mailto:trading@mem-intl.com">
-                  trading@mem-intl.com
-                </a>{" "}
-                or{" "}
-                <a className="underline" href="mailto:greg@mem-intl.com">
-                  greg@mem-intl.com
-                </a>
-              </p>
-              <p>HQ: Alpharetta, GA • Operating across the U.S.</p>
-            </div>
-          </div>
-          <div className="rounded-3xl shadow-xl bg-white p-6">
-            {sent ? (
-              <div className="text-center py-10">
-                <div className="mx-auto h-10 w-10 grid place-items-center text-green-600 text-2xl">✔</div>
-                <p className="mt-3 font-medium">Thank you! We'll respond soon.</p>
-                <p className="text-sm text-neutral-600">MEM International Trading</p>
-                <div className="mt-4">
-                  <button onClick={() => setSent(false)} className="border rounded-2xl px-4 py-2 text-sm">Send another</button>
-                </div>
-              </div>
-            ) : (
-              <form className="grid gap-4" onSubmit={(e) => {e.preventDefault(); setSent(true);}}>
-                <div className="grid gap-1">
-                  <label className="text-sm">Name</label>
-                  <input className="border rounded-md px-3 py-2" placeholder="Your name" required />
-                </div>
-                <div className="grid gap-1">
-                  <label className="text-sm">Email</label>
-                  <input type="email" className="border rounded-md px-3 py-2" placeholder="you@company.com" required />
-                </div>
-                <div className="grid gap-1">
-                  <label className="text-sm">Message</label>
-                  <textarea className="border rounded-md px-3 py-2" placeholder="Volumes, materials, lanes, timelines…" required />
-                </div>
-                <button type="submit" className="rounded-2xl bg-neutral-900 text-white px-4 py-2 text-sm">Send Message</button>
-              </form>
-            )}
-          </div>
-        </div>
-      </section>
+<section id="contact" className="py-16 lg:py-24 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-8 items-start">
+    <div>
+      <h3 className="text-3xl font-semibold tracking-tight">Contact</h3>
+      <p className="mt-3 text-neutral-600">
+        Tell us your projects, volumes, and constraints. We’ll give you a concrete plan and numbers you can verify.
+      </p>
+      <div className="mt-6 grid gap-2 text-sm text-neutral-700">
+        <p>📞 +1 (609) 598-2266</p>
+        <p>
+          Email:{" "}
+          <a className="underline" href="mailto:trading@mem-intl.com">
+            trading@mem-intl.com
+          </a>{" "}
+          or{" "}
+          <a className="underline" href="mailto:greg@mem-intl.com">
+            greg@mem-intl.com
+          </a>
+        </p>
+        <p>HQ: Alpharetta, GA • Operating across the U.S.</p>
+      </div>
+    </div>
+
+    {/* Only a CTA now — no local form */}
+    <div className="rounded-3xl shadow-xl bg-white p-6">
+      <p className="text-neutral-700 mb-4">
+        Use our contact page to send a message securely.
+      </p>
+      <Link
+        href="/contact"
+        className="inline-block rounded-2xl bg-neutral-900 text-white px-4 py-2 text-sm"
+      >
+        Open Contact Form
+      </Link>
+    </div>
+  </div>
+</section>
 
       {/* Privacy Policy (new) */}
       <section id="privacy" className="py-16 lg:py-24 bg-neutral-50 border-t border-neutral-200">
