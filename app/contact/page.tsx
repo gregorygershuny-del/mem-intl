@@ -4,6 +4,41 @@ import { useState } from "react";
 
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();                // stop the browser redirect
+    setSending(true);
+    setErr(null);
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch("https://formspree.io/f/mzzakdkw", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+
+      const json = await res.json().catch(() => ({} as any));
+
+      if (res.ok) {
+        form.reset();
+        setSent(true);                 // show your on-page success UI
+      } else {
+        const detail =
+          (json?.errors && json.errors.map((e: any) => e.message).join(" ")) ||
+          "Submission failed.";
+        setErr(detail);
+      }
+    } catch {
+      setErr("Network error. Try again.");
+    } finally {
+      setSending(false);
+    }
+  }
 
   return (
     <div className="max-w-xl mx-auto p-8">
@@ -22,16 +57,14 @@ export default function ContactPage() {
           </div>
         </div>
       ) : (
-        <form
-          action="https://formspree.io/f/mzzakdkw"
-          method="POST"
-          onSubmit={() => setSent(true)}
-          className="space-y-6"
-        >
+        <form onSubmit={onSubmit} className="space-y-6" noValidate>
+          {/* spam honeypot – invisible to humans */}
+          <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
+          {/* optional subject line in your Formspree inbox */}
+          <input type="hidden" name="_subject" value="New inquiry from mem-intl.com contact form" />
+
           <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Name
-            </label>
+            <label className="block text-sm font-medium text-gray-700">Name</label>
             <input
               type="text"
               name="name"
@@ -41,9 +74,7 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Email
-            </label>
+            <label className="block text-sm font-medium text-gray-700">Email</label>
             <input
               type="email"
               name="email"
@@ -53,9 +84,7 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Message
-            </label>
+            <label className="block text-sm font-medium text-gray-700">Message</label>
             <textarea
               name="message"
               required
@@ -64,12 +93,15 @@ export default function ContactPage() {
             />
           </div>
 
+          {err && <p className="text-sm text-red-700">{err}</p>}
+
           <div>
             <button
               type="submit"
-              className="bg-black text-white px-6 py-2 rounded-2xl shadow hover:bg-neutral-800"
+              disabled={sending}
+              className="bg-black text-white px-6 py-2 rounded-2xl shadow hover:bg-neutral-800 disabled:opacity-60"
             >
-              Submit
+              {sending ? "Sending…" : "Submit"}
             </button>
           </div>
         </form>
