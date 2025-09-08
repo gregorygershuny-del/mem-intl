@@ -34,11 +34,11 @@ export default function Page() {
             <a href="#industries" className="hover:text-neutral-600">Industries</a>
             <a href="#about" className="hover:text-neutral-600">About</a>
             <Link href="/national-scrap" className="hover:text-neutral-600">National Scrap Co.</Link>
-            <a href="#contact" className="hover:text-neutral-600">Contact</a>
+            <a href="/contact" className="hover:text-neutral-600">Contact</a>
           </nav>
           <div className="hidden md:block">
             <a
-              href="#contact"
+              href="/contact"
               className="inline-flex items-center rounded-2xl bg-neutral-900 text-white px-4 py-2 text-sm"
             >
               Let’s Talk
