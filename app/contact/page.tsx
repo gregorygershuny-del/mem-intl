@@ -8,7 +8,7 @@ export default function ContactPage() {
   const [err, setErr] = useState<string | null>(null);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();                // stop the browser redirect
+    e.preventDefault(); // stop the browser redirect
     setSending(true);
     setErr(null);
 
@@ -16,19 +16,19 @@ export default function ContactPage() {
     const data = new FormData(form);
 
     try {
-      const res = await fetch("https://formspree.io/f/mzzakdkw", {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: data,
+        body: data, // ✅ send FormData, no headers
       });
 
       const json = await res.json().catch(() => ({} as any));
 
-      if (res.ok) {
+      if (res.ok && json.ok) {
         form.reset();
-        setSent(true);                 // show your on-page success UI
+        setSent(true); // show your on-page success UI
       } else {
         const detail =
+          json?.error ||
           (json?.errors && json.errors.map((e: any) => e.message).join(" ")) ||
           "Submission failed.";
         setErr(detail);
@@ -44,9 +44,15 @@ export default function ContactPage() {
     <div className="max-w-xl mx-auto p-8">
       {sent ? (
         <div className="text-center py-10">
-          <div className="mx-auto h-10 w-10 grid place-items-center text-green-600 text-2xl">✓</div>
-          <p className="mt-3 font-medium">Thanks! We will respond to you shortly!</p>
-          <p className="text-sm text-neutral-600">MEM International Trading</p>
+          <div className="mx-auto h-10 w-10 grid place-items-center text-green-600 text-2xl">
+            ✓
+          </div>
+          <p className="mt-3 font-medium">
+            Thanks! We will respond to you shortly!
+          </p>
+          <p className="text-sm text-neutral-600">
+            MEM International Trading
+          </p>
           <div className="mt-4">
             <button
               onClick={() => setSent(false)}
@@ -59,12 +65,24 @@ export default function ContactPage() {
       ) : (
         <form onSubmit={onSubmit} className="space-y-6" noValidate>
           {/* spam honeypot – invisible to humans */}
-          <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
+          <input
+            type="text"
+            name="_gotcha"
+            className="hidden"
+            tabIndex={-1}
+            autoComplete="off"
+          />
           {/* optional subject line in your Formspree inbox */}
-          <input type="hidden" name="_subject" value="New inquiry from mem-intl.com contact form" />
+          <input
+            type="hidden"
+            name="_subject"
+            value="New inquiry from mem-intl.com contact form"
+          />
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Name</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Name
+            </label>
             <input
               type="text"
               name="name"
@@ -74,7 +92,9 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
             <input
               type="email"
               name="email"
@@ -84,7 +104,9 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Message</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Message
+            </label>
             <textarea
               name="message"
               required
