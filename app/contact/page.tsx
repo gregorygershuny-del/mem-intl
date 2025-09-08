@@ -3,11 +3,13 @@
 import { useState } from "react";
 import Script from "next/script";
 
-// allow window.grecaptcha
-declare global { interface Window { grecaptcha?: any } }
+// reCAPTCHA v3 SITE key (public key). This is fine to hard-code for now.
+const SITE_KEY = "6LdMf8IrAAAAAC_HTtx7SVmKmCcDzzc55XgdkVrd";
 
-// ⬅️ Use your reCAPTCHA v3 SITE key via env var
-const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string;
+// Let TS know about grecaptcha on window
+declare global {
+  interface Window { grecaptcha?: any }
+}
 
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
@@ -16,12 +18,11 @@ export default function ContactPage() {
 
   function getRecaptchaToken(): Promise<string> {
     return new Promise((resolve, reject) => {
-      if (!SITE_KEY) return reject(new Error("Missing reCAPTCHA site key"));
       if (!window.grecaptcha) return reject(new Error("reCAPTCHA not loaded"));
       window.grecaptcha.ready(() => {
         window.grecaptcha
           .execute(SITE_KEY, { action: "submit" })
-          .then((t: string) => resolve(t))
+          .then((token: string) => resolve(token))
           .catch(reject);
       });
     });
@@ -36,11 +37,11 @@ export default function ContactPage() {
     const data = new FormData(form);
 
     try {
-      // 1) get a v3 token and attach it under the EXACT field name Formspree expects
+      // 1) fetch a v3 token and attach it under the exact field name
       const token = await getRecaptchaToken();
       data.set("g-recaptcha-response", token);
 
-      // 2) send
+      // 2) submit to our proxy (which forwards to Formspree)
       const res = await fetch("/api/contact", { method: "POST", body: data });
       const json = await res.json().catch(() => ({} as any));
 
@@ -65,7 +66,7 @@ export default function ContactPage() {
     <div className="max-w-xl mx-auto p-8">
       {/* Load reCAPTCHA v3 */}
       <Script
-        src={`https://www.google.com/recaptcha/api.js?render=${SITE_KEY ?? ""}`}
+        src={`https://www.google.com/recaptcha/api.js?render=${SITE_KEY}`}
         strategy="afterInteractive"
       />
 
@@ -75,35 +76,58 @@ export default function ContactPage() {
           <p className="mt-3 font-medium">Thanks! We will respond to you shortly!</p>
           <p className="text-sm text-neutral-600">MEM International Trading</p>
           <div className="mt-4">
-            <button onClick={() => setSent(false)} className="border rounded-2xl px-4 py-2 text-sm">
+            <button
+              onClick={() => setSent(false)}
+              className="border rounded-2xl px-4 py-2 text-sm"
+            >
               Send another
             </button>
           </div>
         </div>
       ) : (
         <form onSubmit={onSubmit} className="space-y-6" noValidate>
+          {/* honeypot */}
           <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
           <input type="hidden" name="_subject" value="New inquiry from mem-intl.com contact form" />
 
           <div>
             <label className="block text-sm font-medium text-gray-700">Name</label>
-            <input type="text" name="name" required className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
+            <input
+              type="text"
+              name="name"
+              required
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+            />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700">Email</label>
-            <input type="email" name="email" required className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
+            <input
+              type="email"
+              name="email"
+              required
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+            />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700">Message</label>
-            <textarea name="message" required rows={4} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
+            <textarea
+              name="message"
+              required
+              rows={4}
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+            />
           </div>
 
           {err && <p className="text-sm text-red-700">{err}</p>}
 
           <div>
-            <button type="submit" disabled={sending} className="bg-black text-white px-6 py-2 rounded-2xl shadow hover:bg-neutral-800 disabled:opacity-60">
+            <button
+              type="submit"
+              disabled={sending}
+              className="bg-black text-white px-6 py-2 rounded-2xl shadow hover:bg-neutral-800 disabled:opacity-60"
+            >
               {sending ? "Sending…" : "Submit"}
             </button>
           </div>
